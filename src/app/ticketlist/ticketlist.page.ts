@@ -63,12 +63,12 @@ export class TicketlistPage implements OnInit {
   async delete(obj) {
     // var _creatorid = req.body.creatorid
     // var _momentuserid = req.body._momentuserid
-    this.tfm.User.roleid = 1 // hardcode
+    this.tfm.User.roleid = 2 // hardcode
     if (this.tfm.User.roleid === 2) {
       var _dat = {
         ticketid: obj.id,
         creatorid: obj.creatorid,
-        momentuserid: 9 // hardcode
+        momentuserid: 8 // hardcode
       }
       debugger
       var _that = this
