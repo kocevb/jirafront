@@ -38,5 +38,18 @@ export class TicketlistPage implements OnInit {
     return await modal.present();
   }
 
+  async editTicket(_obj) {
+    const modal = await this.modalController.create({
+      component: EditticketComponent,
+      componentProps: {
+        id: _obj.id, ticket: _obj,
+        cb: function () {
+        }
+      }
+    });
+    return await modal.present();
+  }
+
+
 
 }
