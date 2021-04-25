@@ -14,6 +14,8 @@ export class TFM {
         lastname: '',
         status: '',
         email: '',
+        roleid: 2,
+
     }
 
     userHASH: string = ''
@@ -79,6 +81,7 @@ export class TFM {
                     _that.User.lastname = _data[0].lastname
                     _that.User.status = _data[0].status
                     _that.User.email = _data[0].email
+                    _that.User.roleid = _data[0].roleid
                     _callback()
                 })
             } else {

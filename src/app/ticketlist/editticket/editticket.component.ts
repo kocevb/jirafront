@@ -71,7 +71,7 @@ export class EditticketComponent implements OnInit {
       content: this.content,
       assign_userid: this.assign_userid,
       statusid: this.statusid,
-      creatorid: 8
+      creatorid: 8 // hardcode
 
     }
     var _that = this

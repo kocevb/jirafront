@@ -22,9 +22,6 @@
     <ion-col size="8" class="ion-text-center">Title</ion-col>
     <ion-col size="2" class="ion-text-center">Edit</ion-col>
     <ion-col size="2" class="ion-text-center">Delete</ion-col>
-
-
-
   </ion-row>
   <ion-row class="tbl-row" *ngFor="let t of tickets; let idx = index">
     <ion-col size="8" class="ion-text-center">{{t.title}}</ion-col>
@@ -34,7 +31,23 @@
     <ion-col size="2">
       <ion-icon name="trash-outline" class="ion-text-center" (click)="delete(t)"></ion-icon>
     </ion-col>
+  </ion-row>
 
+  <br>
+
+  <ion-row class="tbl-row">
+    <ion-col size="8" class="ion-text-center">Name</ion-col>
+    <ion-col size="2" class="ion-text-center">Activate/nonActivate</ion-col>
+    <ion-col size="2" class="ion-text-center">Delete</ion-col>
+  </ion-row>
+  <ion-row class="tbl-row" *ngFor="let u of users; let idx = index">
+    <ion-col size="8" class="ion-text-center">{{u.firstname}} {{u.lastname}}</ion-col>
+    <ion-col size="2">
+      <ion-icon name="brush-outline" class="ion-text-center" (click)="updateStatusUser(u)"></ion-icon>
+    </ion-col>
+    <ion-col size="2">
+      <ion-icon name="trash-outline" class="ion-text-center" (click)="deleteUser(u.id)"></ion-icon>
+    </ion-col>
   </ion-row>
 
 
