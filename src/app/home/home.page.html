@@ -1,20 +1,54 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <div class="tfm-card">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-list-header text-center no-lines *ngIf="loginFlag == false">
+      <div style="white-space: normal; text-align: center; font-size: 16px; font-weight: bold;"> Create Account</div>
+    </ion-list-header>
+    <ion-list-header text-center no-lines *ngIf="loginFlag == true">
+      <div style="white-space: normal; text-align: center; font-size: 16px; font-weight: bold;"> Login</div>
+    </ion-list-header>
+    <ion-item *ngIf="loginFlag == false" class="my-input">
+      <ion-label position="stacked">First name</ion-label>
+      <ion-input autocapitalize="on" type="text" [(ngModel)]="FName"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="loginFlag == false" class="my-input">
+      <ion-label position="stacked">Last name</ion-label>
+      <ion-input autocapitalize="on" type="text" [(ngModel)]="LName"></ion-input>
+    </ion-item>
+    <ion-item class="my-input">
+      <ion-label position="stacked">E-mail</ion-label>
+      <ion-input autocapitalize="on" type="text" [(ngModel)]="Email" [disabled]="DisabledEmail"></ion-input>
+    </ion-item>
+    <!-- <br><br> -->
+    <ion-item class="my-input">
+      <ion-label position="stacked">Password </ion-label>
+      <ion-input autocapitalize="on" [type]="passType" [(ngModel)]="Password1"></ion-input>
+      <ion-icon *ngIf="showPass==false" (click)="showPass=true; passType='text'" name="eye-outline" slot="end">
+      </ion-icon>
+      <ion-icon *ngIf="showPass==true" (click)="showPass=false; passType='password'" name="eye-off-outline" slot="end">
+      </ion-icon>
+    </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+
+
+    <ion-button *ngIf="loginFlag == false" class="my-button" color="primary" (click)="gotoNext()"
+      style="text-transform: none;"> Create
+    </ion-button>
+    <ion-button *ngIf="loginFlag == true" class="my-button" color="primary" (click)="loginacc()"
+      style="text-transform: none;"> Log in
+    </ion-button>
+
+    <div class="tfm-f-pass" style="font-size: 12px;" *ngIf="loginFlag == false">
+      Already have account ? <span class="tfm-link-3" style="font-size: 12px;margin-top: 15px;" (click)="login()">
+        Login !</span><br><br><br>&nbsp;
+    </div>
+
+    <div class="tfm-f-pass" style="font-size: 12px;" *ngIf="loginFlag == true">
+      Create account ? <span class="tfm-link-3" style="font-size: 12px;margin-top: 15px;" (click)="create()">
+        Create !</span><br><br><br>&nbsp;
+    </div>
+
+
+
   </div>
 </ion-content>

@@ -58,14 +58,34 @@ export class TFM {
 
     }
 
+    public checkUserHash(_callback) {
+        //userHASH
 
+        var _that = this
+        var h = localStorage.getItem("tfmDatahash")
+        if (h == null && h == undefined) { h = '' }
 
+        if (h != "") {
+            this.userHASH = h
+        }
+        if (this.userHASH == '') { this.userHASH = '-1' }
+        this._Post('/api/checkuser', { D1: this.userHASH }, function (_data) {
+            if (_data.E1 > 0) {
+                _that._Post('/api/getuser', { D1: h }, function (_data) {
+                    console.log(_data, '_data')
 
-    public isNumeric(n) {
-        return !isNaN(parseFloat(n)) && isFinite(n);
+                    _that.User.id = _data[0].id
+                    _that.User.firstname = _data[0].firstname
+                    _that.User.lastname = _data[0].lastname
+                    _that.User.status = _data[0].status
+                    _that.User.email = _data[0].email
+                    _callback()
+                })
+            } else {
+                _callback()
+            }
+        })
     }
-    public rndCode() {
-        return Math.floor(Math.random() * (999999 - 100000 + 1) + 100000);
-    }
+
 }
 
