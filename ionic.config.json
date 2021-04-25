@@ -1,5 +1,7 @@
 {
   "name": "jirafront",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
