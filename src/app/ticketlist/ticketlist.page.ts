@@ -50,6 +50,24 @@ export class TicketlistPage implements OnInit {
     return await modal.present();
   }
 
+  async delete(obj) {
+    // var _creatorid = req.body.creatorid
+    // var _momentuserid = req.body._momentuserid
+    var _dat = {
+      ticketid: obj.id,
+      creatorid: obj.creatorid,
+      momentuserid: 9
+    }
+    debugger
+    var _that = this
+    this.tfm._Post('/api/softDeleteTicket', _dat, async function (_data) {
+      console.log(_data, '_data')
+
+    })
+
+  }
+
+
 
 
 }
