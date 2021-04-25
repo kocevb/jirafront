@@ -10,11 +10,12 @@ import { FormsModule } from '@angular/forms';
 import { HTTP } from '@ionic-native/http/ngx';
 import { HttpClientModule } from '@angular/common/http';
 import { TFM } from 'src/tfm';
+import { EditticketComponent } from './ticketlist/editticket/editticket.component';
 
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, EditticketComponent],
+  entryComponents: [EditticketComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, HTTP, TFM],
   bootstrap: [AppComponent],

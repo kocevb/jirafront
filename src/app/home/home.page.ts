@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { TFM } from 'src/tfm';
 
@@ -21,7 +22,7 @@ export class HomePage {
 
   loginFlag = false
 
-  constructor(public alertController: AlertController, public toastController: ToastController, public loadingController: LoadingController, public tfm: TFM) { }
+  constructor(public alertController: AlertController, public toastController: ToastController, public loadingController: LoadingController, public tfm: TFM, public router: Router) { }
 
   async msgbox(_msg) {
     const alert = await this.alertController.create({
@@ -100,6 +101,6 @@ export class HomePage {
 
 
   openticket() {
+    this.router.navigate(['/ticketlist']);
   }
-
 }

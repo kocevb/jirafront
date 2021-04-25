@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="success">
+    <ion-title>Ticket</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeMe()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+
+  <ion-grid>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label position="stacked">Title</ion-label>
+          <ion-input [(ngModel)]="title"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label position="stacked">Content</ion-label>
+          <ion-input [(ngModel)]="Content"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label position="stacked">Assignid</ion-label>
+          <ion-select [(ngModel)]="assign_userid" interface="popover" mode="ios">
+            <ion-select-option *ngFor="let u of users" [value]="u.id">{{u.firstname}} {{u.lastname}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label position="stacked">Status</ion-label>
+          <ion-select [(ngModel)]="statusid" interface="popover" mode="ios">
+            <ion-select-option *ngFor="let s of status" [value]="s.id">{{s.name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="success" (click)="closeMe()">
+        <ion-icon name="close-circle-outline" slot="start"></ion-icon>
+        Cancel
+      </ion-button>
+      <ion-button color="success" fill="solid" (click)="saveMe()">
+        Save
+        <ion-icon name="save-outline" slot="start"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
