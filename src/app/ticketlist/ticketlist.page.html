@@ -18,6 +18,7 @@
     </ion-row>
   </ion-grid>
 
+  <h3 style="text-align: center;">This is for Tickets</h3>
   <ion-row class="tbl-row">
     <ion-col size="8" class="ion-text-center">Title</ion-col>
     <ion-col size="2" class="ion-text-center">Edit</ion-col>
@@ -34,21 +35,64 @@
   </ion-row>
 
   <br>
+  <br>
+  <br>
+  <br>
 
-  <ion-row class="tbl-row">
-    <ion-col size="8" class="ion-text-center">Name</ion-col>
-    <ion-col size="2" class="ion-text-center">Activate/nonActivate</ion-col>
-    <ion-col size="2" class="ion-text-center">Delete</ion-col>
-  </ion-row>
-  <ion-row class="tbl-row" *ngFor="let u of users; let idx = index">
-    <ion-col size="8" class="ion-text-center">{{u.firstname}} {{u.lastname}}</ion-col>
-    <ion-col size="2">
-      <ion-icon name="brush-outline" class="ion-text-center" (click)="updateStatusUser(u)"></ion-icon>
-    </ion-col>
-    <ion-col size="2">
-      <ion-icon name="trash-outline" class="ion-text-center" (click)="deleteUser(u.id)"></ion-icon>
-    </ion-col>
-  </ion-row>
+  <div *ngIf="tfm.User.roleid === 1">
+    <h3 style="text-align: center;">This is for Users</h3>
+    <ion-row class="tbl-row">
+      <ion-col size="8" class="ion-text-center">Name</ion-col>
+      <ion-col size="2" class="ion-text-center">Activate/nonActivate</ion-col>
+      <ion-col size="2" class="ion-text-center">Delete</ion-col>
+    </ion-row>
+    <ion-row class="tbl-row" *ngFor="let u of users; let idx = index">
+      <ion-col size="8" class="ion-text-center">{{u.firstname}} {{u.lastname}}</ion-col>
+      <ion-col size="2">
+        <ion-icon name="brush-outline" class="ion-text-center" (click)="updateStatusUser(u)"></ion-icon>
+      </ion-col>
+      <ion-col size="2">
+        <ion-icon name="trash-outline" class="ion-text-center" (click)="deleteUser(u.id)"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <div *ngIf="tfm.User.roleid === 1">
+    <h3 style="text-align: center;">This is for status</h3>
+
+    <ion-row>
+      <ion-col size="8" style="padding-left: 0px;">
+      </ion-col>
+      <ion-col size="4" class="ion-text-right">
+        <ion-button color="success" mode="md" (click)="openStatus(-1)">
+          <ion-icon name="id-card-outline"></ion-icon> &nbsp; Add new status
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row class="tbl-row">
+      <ion-col size="6" class="ion-text-center">Name</ion-col>
+      <ion-col size="2" class="ion-text-center">Owner</ion-col>
+      <ion-col size="2" class="ion-text-center">edit</ion-col>
+      <ion-col size="2" class="ion-text-center">Delete</ion-col>
+    </ion-row>
+    <ion-row class="tbl-row" *ngFor="let s of status; let idx = index">
+      <ion-col size="6" class="ion-text-center">{{s.name}}</ion-col>
+      <ion-col size="2" class="ion-text-center">{{s.firstname}} {{s.lastname}}</ion-col>
+      <ion-col size="2">
+        <ion-icon name="brush-outline" class="ion-text-center" (click)="editStatus(s)"></ion-icon>
+      </ion-col>
+      <ion-col size="2">
+        <ion-icon name="trash-outline" class="ion-text-center" (click)="deleteStatus(s.id)"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </div>
 
 
 </ion-content>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { TFM } from 'src/tfm';
+import { EditstatusComponent } from './editstatus/editstatus.component';
 import { EditticketComponent } from './editticket/editticket.component';
 
 @Component({
@@ -11,12 +12,14 @@ import { EditticketComponent } from './editticket/editticket.component';
 export class TicketlistPage implements OnInit {
   tickets = []
   users = []
+  status = []
 
   constructor(public tfm: TFM, public modalController: ModalController) {
   }
 
   ngOnInit() {
     this.getTickets()
+    this.getStatusTicket()
     this.tfm.User.roleid = 1 // hardcoded
     if (this.tfm.User.roleid === 1) {
       this.getUsersForAdministrator()
@@ -110,17 +113,61 @@ export class TicketlistPage implements OnInit {
   }
 
   async deleteUser(_id) {
-
     var _dat = {
       userid: _id,
       roleid: 1 // hardcoded,
     }
-    debugger
     var _that = this
     this.tfm._Post('/api/deleteUser', _dat, async function (_data) {
       console.log(_data, '_data')
     })
   }
+
+
+  async getStatusTicket() {
+    var _that = this
+    this.tfm._Get('/api/getStatusTicket', {}, async function (_data) {
+      _that.status = _data
+    })
+  }
+
+  async openStatus() {
+    const modal = await this.modalController.create({
+      component: EditstatusComponent,
+      componentProps: {
+        id: -1,
+        cb: function () {
+        }
+      }
+    });
+    return await modal.present();
+  }
+
+  async editStatus(_obj) {
+    const modal = await this.modalController.create({
+      component: EditstatusComponent,
+      componentProps: {
+        id: _obj.id, status: _obj,
+        cb: function () {
+        }
+      }
+    });
+    return await modal.present();
+  }
+
+
+  async deleteStatus(_id) {
+    var _dat = {
+      statusid: _id,
+      roleid: 1, // hardcoded,
+      statustochange: 2 // harcoded
+    }
+    var _that = this
+    this.tfm._Post('/api/deleteStatusTicket', _dat, async function (_data) {
+      console.log(_data, '_data')
+    })
+  }
+
 
 
 

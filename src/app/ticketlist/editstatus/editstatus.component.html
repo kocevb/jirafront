@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="success">
+    <ion-title>Status</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeMe()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="stacked">Name</ion-label>
+          <ion-input [(ngModel)]="name"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color="success" (click)="closeMe()">
+        <ion-icon name="close-circle-outline" slot="start"></ion-icon>
+        Cancel
+      </ion-button>
+      <ion-button color="success" fill="solid" (click)="saveMe()">
+        Save
+        <ion-icon name="save-outline" slot="start"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
